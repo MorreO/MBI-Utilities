@@ -30,7 +30,7 @@ Qlik Sense Enterprise >= 3.0
 6. Export: Exports Dimensions/Measures from your application so that you can copy them back into your template file for later use.
 
 # Authors
-Henrik Amnäs
+Henrik Amnäs @MBI
 
 # Change Log
 
