@@ -1,1 +1,1 @@
-{"name":" MBI Master Item Manager","description":"Service to manage master items from within an application.","icon":"extension","type":"visualization","version":"1.0","preview":"mbilogo.png","author":"Henrik Amnäs @MBI"}
+{"name":" MBI Utilities","description":"Service to manage master items from within an application and more.","icon":"extension","type":"visualization","version":"1.0","preview":"mbilogo.png","author":"Henrik Amnäs @MBI"}

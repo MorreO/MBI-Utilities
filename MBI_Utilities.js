@@ -856,7 +856,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 
 							$scope.DestroyAllVariables = function () {
 								swal({
-										text: "Warning. This will remove all Variables (Only those you have defined manually). Are you sure you want to continue?",
+										text: "Warning. This will remove all Variables. Are you sure you want to continue?",
 										icon: "warning",
 										buttons: true,
 										dangerMode: true,
@@ -1018,7 +1018,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 					for (var i = 0; i < array.length; i++) {
 						var line = '';
 						for (var index in array[i]) {
-							if (line != '') line += ','
+							if (line != '') line += ';'
 				
 							line += array[i][index];
 						}
