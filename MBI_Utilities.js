@@ -713,24 +713,20 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 												itemsNotFormatted.then((item) => {
 													item.map(item => {
 														console.log(item);
-														switch(item.qMeasure.coloring){
+														switch(item.qMeasure.coloring.baseColor){
 															case undefined: 
-																item.qMeasure.coloring = {
-																	baseColor:{
+																item.qMeasure.coloring.baseColor = {
 																		color:"",
 																		index:-1
-																	}
-																};
+																	};
 															break;
 														}
-														switch(Object.keys(item.qMeasure.coloring).length){
+														switch(Object.keys(item.qMeasure.coloring.baseColor).length){
 															case 0:
-															item.qMeasure.coloring = {
-																baseColor:{
+															item.qMeasure.coloring.baseColor = {
 																	color:"",
 																	index:-1
-																}
-															}
+															};
 															break;
 														}
 														
@@ -744,14 +740,11 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 															Name: `"${item.qMeasure.qLabel}"`,
 															LabelExpression: `"${item.qMeasure.qLabelExpression}"`.replace("undefined", ""),
 															Description: `"${item.qMetaDef.description}"`,
-															Color:`"${item.qMeasure.coloring.baseColor.color}"`,
+															Color:`"${item.qMeasure.coloring.baseColor.color}"`.replace("undefined",""),
 															Tags:`"${item.qMetaDef.tags[0]}"`.replace("undefined", ""),
 															ID: `"${item.qInfo.qId}"`,
 														});
-													})
-													//.replace(/(\u005Ct)/g, '\t').replace(/(\u005Cr\u005Cn)/g, '\n').replace(/(\u005Cn)/g, '\n'),
-												
-													
+													})													
 												
 												}).then( element => {
 													itemsFormatted.forEach(function(obj) {
@@ -1041,7 +1034,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 				
 					var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
 				
-					var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+					var blob = new Blob(["\ufeff",csv]);
 					if (navigator.msSaveBlob) { // IE 10+
 						navigator.msSaveBlob(blob, exportedFilenmae);
 					} else {
