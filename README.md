@@ -16,8 +16,8 @@ Qlik Sense Enterprise >= 3.0
 
 # Using the Template file
 1. Dimensions and Measures must have unique ID's
-2. It is recommended that calculated expressions (usually label expressions) are wrapped in quotes: EG: '='Sum(Dim1)'
-3. It is recommended that text based expressions (usually label expressions) are wrapped in quotes: ''Label Expression Example'
+2. It is recommended that calculated expressions (usually label expressions) are wrapped in single quotes: EG: '='Sum(Dim1)'
+3. It is recommended that text based expressions (usually label expressions) are wrapped in single quotes: 'Label Expression Example'
 4. Measures required: Expression, Name
 5. Dimensions required: Field, Name
 
@@ -33,6 +33,8 @@ Qlik Sense Enterprise >= 3.0
 Henrik Amnäs @MBI
 
 # Change Log
+* 1.01, released 2020-03-09: Increased limit of measures and dimensions from 200 to 500.
 
 # Known Issues and Limitations
-> Exporting of Master Items will sometimes add an additional single quote to the end of a complex expression. Just make sure to remove it when copying back to your template spreadsheet.
+* Exporting of Master Items will sometimes add an additional single quote to the end of a complex expression. Just make sure to remove it when copying back to your template spreadsheet.
+* If your Master Item contains double quotes (") and you export it and open the CSV file in excel, the double quotes will be interpreted as end of cell in Excel and will mess things up. Recommend using [ and ] instead of " in all measures.

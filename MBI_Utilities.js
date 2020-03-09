@@ -41,10 +41,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 						},
 						controller: ['$scope', '$element', function ($scope, $element) {
 							var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-								rows: 200
+								rows: 500
 							});
 							var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-								rows: 200
+								rows: 500
 							});
 							$scope.measurevalues = measurevalues;
 							$scope.dimensionvalues = dimensionvalues;
@@ -52,7 +52,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 							
 							// Create a table of all selected apps
 							var appList = app.createTable(['id_u1'], {
-								rows: 200
+								rows: 500
 							});
 			
 							// Create Create Master Items Using the EngineAPI
@@ -363,10 +363,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 									},
 									controller: ['$scope', '$element', function ($scope, $element) {
 										var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-											rows: 200
+											rows: 500
 										});
 										var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-											rows: 200
+											rows: 500
 										});
 										$scope.measurevalues = measurevalues;
 										$scope.dimensionvalues = dimensionvalues;
@@ -446,10 +446,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 						},
 						controller: ['$scope', '$element', function ($scope, $element) {
 							var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-								rows: 200
+								rows: 500
 							});
 							var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-								rows: 200
+								rows: 500
 							});
 							$scope.measurevalues = measurevalues;
 							$scope.dimensionvalues = dimensionvalues;
@@ -457,7 +457,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 							
 							// Create a table of all selected apps
 							var appList = app.createTable(['id_u1'], {
-								rows: 200
+								rows: 500
 							});
 			
 							//Create Create Master Items Using the EngineAPI
@@ -800,10 +800,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 									},
 									controller: ['$scope', '$element', function ($scope, $element) {
 										var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-											rows: 200
+											rows: 500
 										});
 										var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-											rows: 200
+											rows: 500
 										});
 										$scope.measurevalues = measurevalues;
 										$scope.dimensionvalues = dimensionvalues;
@@ -832,10 +832,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 						},
 						controller: ['$scope', '$element', function ($scope, $element) {
 							var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-								rows: 200
+								rows: 500
 							});
 							var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-								rows: 200
+								rows: 500
 							});
 							$scope.measurevalues = measurevalues;
 							$scope.dimensionvalues = dimensionvalues;
@@ -843,7 +843,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 							
 							// Create a table of all selected apps
 							var appList = app.createTable(['id_u1'], {
-								rows: 200
+								rows: 500
 							});
 			
 
@@ -921,10 +921,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 									},
 									controller: ['$scope', '$element', function ($scope, $element) {
 										var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-											rows: 200
+											rows: 500
 										});
 										var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-											rows: 200
+											rows: 500
 										});
 										$scope.measurevalues = measurevalues;
 										$scope.dimensionvalues = dimensionvalues;
@@ -955,10 +955,10 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 				};
 
 				var measurevalues = app.createTable(['%MI%MeasureName', '%MI%MeasureDescription', '%MI%MeasureLabelExpression', '%MI%MeasureExpression', '%MI%MeasureTags', '%MI%MeasureColor', '%MI%MeasureId'], {
-					rows: 200
+					rows: 500
 				});
 				var dimensionvalues = app.createTable(['%MI%DimensionName', '%MI%DimensionField', '%MI%DimensionLabelExpression', '%MI%DimensionDescription', '%MI%DimensionColor', '%MI%DimensionTags', '%MI%DimensionId'], {
-					rows: 200
+					rows: 500
 				});
 				$scope.measurevalues = measurevalues;
 				$scope.dimensionvalues = dimensionvalues;
@@ -966,7 +966,7 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 				
 				// Create a table of all selected apps
 				var appList = app.createTable(['id_u1'], {
-					rows: 200
+					rows: 500
 				});
 
 
