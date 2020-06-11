@@ -3,7 +3,7 @@
     "description": "Service to manage master items from within an application and more.",
     "icon": "extension",
     "type": "visualization",
-    "version": "1.01",
+    "version": "1.02",
     "preview": "mbilogo.png",
-    "author": "Henrik Amnäs @MBI"
+    "author": "Henrik Amnäs @MBI, Måns Östberg @MBI"
 }

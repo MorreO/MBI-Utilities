@@ -713,6 +713,14 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 												itemsNotFormatted.then((item) => {
 													item.map(item => {
 														console.log(item);
+														if (typeof item.qMeasure.coloring === "undefined") {
+															item.qMeasure.coloring = {
+																	baseColor : {
+																		color:"",
+																		index:-1
+																	}
+																};
+															}
 														switch(item.qMeasure.coloring.baseColor){
 															case undefined: 
 																item.qMeasure.coloring.baseColor = {
