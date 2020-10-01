@@ -36,6 +36,7 @@ Måns Östberg @MBI
 # Change Log
 * 1.01, released 2020-03-09: Increased limit of measures and dimensions from 200 to 500.
 * 1.02, released 2020-06-11: Added handling of old measures without basecolor property.
+* 1.03, released 2020-10-01: Improved import and update of measures and dimensions without color, no longer breaks the automatic coloring.
 
 # Known Issues and Limitations
 * Exporting of Master Items will sometimes add an additional single quote to the end of a complex expression. Just make sure to remove it when copying back to your template spreadsheet.

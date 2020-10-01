@@ -94,39 +94,60 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 															if(description === '-'){
 																description = '';
 															}
-															if(color === '-'){
-																color = '';
-															}
 															if(tags === '-'){
 																tags ='';
 															}
-															enigma.app.createDimension({
-																"qInfo": {
-																	"qType": "dimension",
-																	"qId": row.cells[6].qText
-																},
-																"qDim": {
-																	//	"title": "something",
-																	"qGrouping": "N",
-																	"qLabelExpression": labelExpression,
-																	"qFieldDefs": [
-																		row.cells[1].qText //Dimension Field:
-																	],
-																	//"qFieldLabels": ["TEST"],
-																	"title": row.cells[0].qText,
-																	"coloring": {
-																		"baseColor": {
-																			"color": color, // Dimension Color:
-																			"index": -1
+
+															if(color === '-' || color== null || color == ''){
+																console.log("No color");
+																enigma.app.createDimension({
+																	"qInfo": {
+																		"qType": "dimension",
+																		"qId": row.cells[6].qText
+																	},
+																	"qDim": {
+																		//	"title": "something",
+																		"qGrouping": "N",
+																		"qLabelExpression": labelExpression,
+																		"qFieldDefs": [
+																			row.cells[1].qText //Dimension Field:
+																		],
+																		"title": row.cells[0].qText,
+																	},
+																	"qMetaDef": {
+																		"title": row.cells[0].qText, //Dimension Name
+																		"description": description, //Desciption:
+																		"tags": [tags], //Tags
+																	}
+																});
+															} else {
+																console.log("Color");
+																enigma.app.createDimension({
+																	"qInfo": {
+																		"qType": "dimension",
+																		"qId": row.cells[6].qText
+																	},
+																	"qDim": {
+																		"qGrouping": "N",
+																		"qLabelExpression": labelExpression,
+																		"qFieldDefs": [
+																			row.cells[1].qText //Dimension Field:
+																		],
+																		"title": row.cells[0].qText,
+																		"coloring": {
+																			"baseColor": {
+																				"color": color, // Dimension Color:
+																				"index": -1
+																			},
 																		},
 																	},
-																},
-																"qMetaDef": {
-																	"title": row.cells[0].qText, //Dimension Name
-																	"description": description, //Desciption:
-																	"tags": [tags], //Tags
-																}
-															});
+																	"qMetaDef": {
+																		"title": row.cells[0].qText, //Dimension Name
+																		"description": description, //Desciption:
+																		"tags": [tags], //Tags
+																	}
+																});																
+															}															
 														} else {
 															//swal("Duplicates found. Some dimensions may not have been imported.")
 														}
@@ -160,46 +181,79 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 									if(description === '-'){
 										description = '';
 									}
-									if(color === '-'){
-										color = '';
-									}
 									if(tags === '-'){
 										tags ='';
 									}
-									enigma.app.getDimension(row.cells[6].qText).then(reply =>{
-										reply.setProperties({
-											"qInfo": {
-												"qType": "dimension",
-												"qId": row.cells[6].qText
-											},
-											"qDim": {
-												//	"title": "something",
-												"qGrouping": "N",
-												"qLabelExpression": labelExpression,
-												"qFieldDefs": [
-													row.cells[1].qText //Dimension Field:
-												],
-												//"qFieldLabels": ["TEST"],
-												"title": row.cells[0].qText,
-												"coloring": {
-													"baseColor": {
-														"color": color, // Dimension Color:
-														"index": -1
+									if(color === '-' || color== null || color == ''){
+										console.log("No color");
+										enigma.app.getDimension(row.cells[6].qText).then(reply =>{
+											reply.setProperties({
+												"qInfo": {
+													"qType": "dimension",
+													"qId": row.cells[6].qText
+												},
+												"qDim": {
+													//	"title": "something",
+													"qGrouping": "N",
+													"qLabelExpression": labelExpression,
+													"qFieldDefs": [
+														row.cells[1].qText //Dimension Field:
+													],
+													//"qFieldLabels": ["TEST"],
+													"title": row.cells[0].qText,
+												},
+												"qMetaDef": {
+													"title": row.cells[0].qText, //Dimension Name
+													"description": description, //Desciption:
+													"tags": [tags], //Tags
+												}
+											}).then(reply => {
+												swal({
+													text:"Dimensions Updated.", 
+													icon: "success",
+												});
+											})
+										})
+									} else {
+										console.log("Color");
+										enigma.app.getDimension(row.cells[6].qText).then(reply =>{
+											reply.setProperties({
+												"qInfo": {
+													"qType": "dimension",
+													"qId": row.cells[6].qText
+												},
+												"qDim": {
+													//	"title": "something",
+													"qGrouping": "N",
+													"qLabelExpression": labelExpression,
+													"qFieldDefs": [
+														row.cells[1].qText //Dimension Field:
+													],
+													//"qFieldLabels": ["TEST"],
+													"title": row.cells[0].qText,
+													"coloring": {
+														"baseColor": {
+															"color": color, // Dimension Color:
+															"index": -1
+														},
 													},
 												},
-											},
-											"qMetaDef": {
-												"title": row.cells[0].qText, //Dimension Name
-												"description": description, //Desciption:
-												"tags": [tags], //Tags
-											}
-										}).then(reply => {
-											swal({
-												text:"Dimensions Updated.", 
-												icon: "success",
-											});
+												"qMetaDef": {
+													"title": row.cells[0].qText, //Dimension Name
+													"description": description, //Desciption:
+													"tags": [tags], //Tags
+												}
+											}).then(reply => {
+												swal({
+													text:"Dimensions Updated.", 
+													icon: "success",
+												});
+											})
 										})
-									})
+
+									}
+										
+										
 								});
 							};
 							$scope.DestroyDimension = function () {
@@ -500,37 +554,58 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 															if(description === '-'){
 																description = '';
 															}
-															if(color === '-'){
-																color = '';
-															}
 															if(tags === '-'){
 																tags ='';
 															}
-															enigma.app.createMeasure({
-																"qInfo": {
-																	"qType": "measure",
-																	"qId": row.cells[6].qText
-																},
-																"qMeasure": {
-																	"qLabel": row.cells[0].qText,
-																	"qDef": row.cells[3].qText,
-																	"qGrouping": "N",
-																	"qLabelExpression": labelExpression, // wrap this string in ='' so Qlik understands it as an expression
-																	"qExpressions": [],
-																	"coloring": {
-																		"baseColor": {
-																			"color": color,
-																			"index": -1
-																		},
+															if(color === '-' || color== null || color == ''){
+																console.log("No color");
+																enigma.app.createMeasure({
+																	"qInfo": {
+																		"qType": "measure",
+																		"qId": row.cells[6].qText
 																	},
-																	"qActiveExpression": 0
-																},
-																"qMetaDef": {
-																	"title": row.cells[0].qText,
-																	"description": description, // Description:
-																	"tags": [tags], //Tags:
-																}
-															});
+																	"qMeasure": {
+																		"qLabel": row.cells[0].qText,
+																		"qDef": row.cells[3].qText,
+																		"qGrouping": "N",
+																		"qLabelExpression": labelExpression, // wrap this string in ='' so Qlik understands it as an expression
+																		"qExpressions": [],
+																		"qActiveExpression": 0
+																	},
+																	"qMetaDef": {
+																		"title": row.cells[0].qText,
+																		"description": description, // Description:
+																		"tags": [tags], //Tags:
+																	}
+																});
+															} else {
+																console.log("Color");
+																enigma.app.createMeasure({
+																	"qInfo": {
+																		"qType": "measure",
+																		"qId": row.cells[6].qText
+																	},
+																	"qMeasure": {
+																		"qLabel": row.cells[0].qText,
+																		"qDef": row.cells[3].qText,
+																		"qGrouping": "N",
+																		"qLabelExpression": labelExpression, // wrap this string in ='' so Qlik understands it as an expression
+																		"qExpressions": [],
+																		"coloring": {
+																			"baseColor": {
+																				"color": color,
+																				"index": -1
+																			},
+																		},
+																		"qActiveExpression": 0
+																	},
+																	"qMetaDef": {
+																		"title": row.cells[0].qText,
+																		"description": description, // Description:
+																		"tags": [tags], //Tags:
+																	}
+																});
+															}																
 														} else {
 															//swal("Duplicates found. Some measures may not have been imported")
 														}
@@ -561,42 +636,69 @@ define(['jquery', 'qlik', 'text!./template.ng.html', 'text!./dialog-template.ng.
 										if(description === '-'){
 											description = '';
 										}
-										if(color === '-'){
-											color = '';
-										}
 										if(tags === '-'){
 											tags ='';
 										}
-										reply.setProperties({
-											"qInfo": {
-												"qType": "measure",
-												"qId": row.cells[6].qText
-											},
-											"qMeasure": {
-												"qLabel": row.cells[0].qText,
-												"qDef": row.cells[3].qText,
-												"qGrouping": "N",
-												"qLabelExpression": labelExpression,
-												"qExpressions": [],
-												"coloring": {
-													"baseColor": {
-														"color": color,
-														"index": -1
-													},
+										
+										if(color === '-' || color== null || color == ''){
+											console.log("No color");
+											reply.setProperties({
+												"qInfo": {
+													"qType": "measure",
+													"qId": row.cells[6].qText
 												},
-												"qActiveExpression": 0
-											},
-											"qMetaDef": {
-												"title": row.cells[0].qText,
-												"description": description, // Description:
-												"tags": [tags], //Tags:
-											}
-										}).then(reply => {
-											swal({
-												text:"Measure Master Items Updated.", 
-												icon: "success",
-											});
-										})
+												"qMeasure": {
+													"qLabel": row.cells[0].qText,
+													"qDef": row.cells[3].qText,
+													"qGrouping": "N",
+													"qLabelExpression": labelExpression,
+													"qExpressions": [],
+													"qActiveExpression": 0
+												},
+												"qMetaDef": {
+													"title": row.cells[0].qText,
+													"description": description, // Description:
+													"tags": [tags], //Tags:
+												}
+											}).then(reply => {
+												swal({
+													text:"Measure Master Items Updated.", 
+													icon: "success",
+												});
+											})
+										} else { 
+											console.log("Color");
+											reply.setProperties({
+												"qInfo": {
+													"qType": "measure",
+													"qId": row.cells[6].qText
+												},
+												"qMeasure": {
+													"qLabel": row.cells[0].qText,
+													"qDef": row.cells[3].qText,
+													"qGrouping": "N",
+													"qLabelExpression": labelExpression,
+													"qExpressions": [],
+													"coloring": {
+														"baseColor": {
+															"color": color,
+															"index": -1
+														},
+													},
+													"qActiveExpression": 0
+												},
+												"qMetaDef": {
+													"title": row.cells[0].qText,
+													"description": description, // Description:
+													"tags": [tags], //Tags:
+												}
+											}).then(reply => {
+												swal({
+													text:"Measure Master Items Updated.", 
+													icon: "success",
+												});
+											})
+										}
 									})
 								});
 							};
